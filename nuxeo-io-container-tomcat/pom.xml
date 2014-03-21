@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.nuxeo.io</groupId>
+    <artifactId>nuxeo-io-container-parent</artifactId>
+    <version>5.9.3-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>nuxeo-io-container-tomcat</artifactId>
+  <name>nuxeo.io contaienr Tomcat</name>
+  <description>nuxeo.io container Tomcat</description>
+  <packaging>pom</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.nuxeo.io</groupId>
+      <artifactId>nuxeo-io-etcd</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.nuxeo.io</groupId>
+      <artifactId>nuxeo-io-container</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.nuxeo.build</groupId>
+        <artifactId>ant-assembly-maven-plugin</artifactId>
+        <configuration>
+          <buildFiles>
+            <buildFile>${basedir}/src/main/assemble/assembly.xml</buildFile>
+          </buildFiles>
+        </configuration>
+        <executions>
+          <execution>
+            <id>packaging</id>
+            <goals>
+              <goal>build</goal>
+            </goals>
+            <phase>package</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

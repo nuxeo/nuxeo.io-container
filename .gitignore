@@ -1,0 +1,12 @@
+*~
+.vagrant
+*.pyc
+*.swp
+controller/AWS_DEV_CREDS.txt
+controller/resources/distributions/*
+controller/bin/flush
+*.idea
+*.tmp
+bower_components
+node_modules
+vms/core/etcd_token

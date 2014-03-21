@@ -1,0 +1,119 @@
+<project name="nuxeo-io-container-assembly"
+  default="build"
+  xmlns:nx="urn:nuxeo-build"
+  xmlns:artifact="urn:nuxeo-artifact">
+  <taskdef resource="org/nuxeo/build/antlib.xml" uri="urn:nuxeo-build" />
+  <taskdef resource="org/nuxeo/build/artifact/antlib.xml"
+    uri="urn:nuxeo-artifact" />
+
+  <target name="init" unless="init.done">
+    <property name="outdir" value="${maven.project.build.directory}" />
+    <property name="stagedir" value="${outdir}/stage" />
+    <property name="app.path"
+      value="${stagedir}/${maven.project.artifactId}-${maven.project.version}" />
+
+    <antcall target="expand" />
+    <property name="init.done" value="true" />
+  </target>
+
+  <target name="expand" unless="no.build">
+    <artifact:nuxeo-expand groupPrefixes="org.nuxeo,com.nuxeo" />
+    <artifact:print output="${outdir}/dependency-tree.log" />
+  </target>
+
+  <target name="build" depends="init" unless="no.build">
+    <artifact:attach file="pom.xml" type="pom" />
+    <antcall target="build-nuxeo-io-container-tomcat" />
+  </target>
+
+  <target name="build-nuxeo-io-container-tomcat" depends="init,clean" unless="">
+    <echo level="info">Building nuxeo.io Container Tomcat distribution...</echo>
+    <mkdir dir="${stagedir}" />
+    <unzip dest="${stagedir}">
+      <artifact:resolveFile key="org.nuxeo.ecm.distribution:nuxeo-distribution-tomcat::zip:nuxeo-cap" />
+      <!--
+      <patternset>
+        <exclude name="bundles-we-do-not-want**" />
+      </patternset>
+      -->
+    </unzip>
+    <nx:rename from="${stagedir}/nuxeo-*" to="${app.path}" />
+
+    <copy todir="${app.path}/nxserver/bundles" overwrite="true" verbose="true">
+      <artifact:set>
+        <includes>
+          <artifact groupId="org.nuxeo*" scope="!test" type="!pom" />
+          <artifact groupId="com.nuxeo*" scope="!test" type="!pom" />
+        </includes>
+        <excludes>
+          <artifact groupId="org.nuxeo.lib*" />
+        </excludes>
+      </artifact:set>
+    </copy>
+    <nx:rmdups dir="${app.path}/nxserver/bundles" />
+
+    <copy todir="${app.path}/nxserver/lib" overwrite="true" verbose="true">
+      <artifact:set>
+        <includes>
+          <artifact groupId="!org.nuxeo*" scope="!test" />
+          <artifact groupId="org.nuxeo.lib*" scope="!test" />
+        </includes>
+        <excludes>
+          <artifact groupId="com.nuxeo*" />
+        </excludes>
+      </artifact:set>
+    </copy>
+
+    <delete>
+      <fileset dir="${app.path}/nxserver/lib">
+        <!-- jetty is needed by vcs remote -->
+        <!-- jetty-util is needed by jsp impl jar - which is referring jetty log classes -->
+        <!-- jetty-naming has jndi properties conflicting with Tomcat -->
+        <include name="jetty-naming*" />
+        <include name="el-api*" />
+        <include name="jsp-*" />
+        <include name="juel-api-*" />
+        <include name="tomcat-dbcp-*" />
+      </fileset>
+      <!-- replaced by sl4j bridge -->
+      <fileset dir="${app.path}/nxserver/lib">
+        <include name="commons-logging*" />
+      </fileset>
+    </delete>
+    <!-- Move some libraries from nxserver to Tomcat default lib directory -->
+    <move todir="${app.path}/lib">
+      <fileset dir="${app.path}/nxserver/lib">
+        <include name="nuxeo-*" />
+        <include name="lucene-*" />
+        <include name="commons-lang-*" />
+        <include name="freemarker-*" />
+        <include name="mail-*" />
+        <include name="xercesImpl-*" />
+        <!-- install sl4j bridge in container classpath -->
+        <include name="slf4j*" />
+        <include name="jcl-over-slf4j*" />
+        <include name="log4j-*" />
+      </fileset>
+    </move>
+    <nx:rmdups dir="${app.path}/nxserver/lib" />
+    <nx:rmdups dir="${app.path}/lib" />
+
+    <!-- Move JAX libraries more recent than those from JDK6 into endorsed -->
+    <move todir="${app.path}/endorsed">
+      <fileset dir="${app.path}/nxserver/lib">
+        <include name="jaxb-api-*" />
+        <include name="jaxws-api-*" />
+      </fileset>
+    </move>
+
+    <zip destfile="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip"
+      basedir="${stagedir}" />
+    <artifact:attach file="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip"
+      type="zip" />
+  </target>
+
+  <target name="clean">
+    <delete dir="${stagedir}" />
+  </target>
+
+</project>
