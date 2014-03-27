@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<fragment version="1">
+
+  <extension target="web#LISTENER">
+    <listener>
+      <listener-class>
+        com.nuxeo.io.container.IoContainerServletContextListener
+        org.nuxeo.opensocial.container.server.guice.GuiceServletConfig
+      </listener-class>
+    </listener>
+  </extension>
+
+</fragment>

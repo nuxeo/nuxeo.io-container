@@ -9,30 +9,29 @@
 
 package com.nuxeo.io.container;
 
-import org.nuxeo.ecm.core.api.ClientException;
-import org.nuxeo.ecm.core.event.Event;
-import org.nuxeo.ecm.core.event.EventListener;
+import com.nuxeo.io.etcd.EtcdService;
 import org.nuxeo.runtime.api.Framework;
 
-import com.nuxeo.io.etcd.EtcdService;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
-/**
- * @since 1.0
- */
-public class HeartBeatListener implements EventListener {
+public class IoContainerServletContextListener implements ServletContextListener {
 
-    public static final String ENVS_ALIVE_KEY_PATTERN = "/envs/%s/status/alive";
+    public static final String ENVS_ALIVE_KEY_PATTERN = "/envs/%s/status/current";
 
     public static final String ENV_TECH_ID_VAR = "ENV_TECH_ID";
 
-    public static final int TTL = 10;
-
     @Override
-    public void handleEvent(Event event) throws ClientException {
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
         String key = String.format(ENVS_ALIVE_KEY_PATTERN,
                 System.getenv(ENV_TECH_ID_VAR));
-        etcdService.set(key, "1", TTL);
+        etcdService.set(key, "started");
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        // TODO mark it stopped?
     }
 
 }
