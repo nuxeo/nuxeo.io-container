@@ -11,27 +11,26 @@ package com.nuxeo.io.container;
 
 import com.nuxeo.io.etcd.EtcdService;
 import org.nuxeo.runtime.api.Framework;
+import org.nuxeo.runtime.model.ComponentContext;
+import org.nuxeo.runtime.model.DefaultComponent;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-
-public class IoContainerServletContextListener implements ServletContextListener {
+/**
+ * @since 5.9.3
+ */
+public class IoContainerComponent extends DefaultComponent {
 
     public static final String ENVS_ALIVE_KEY_PATTERN = "/envs/%s/status/current";
 
     public static final String ENV_TECH_ID_VAR = "ENV_TECH_ID";
 
     @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
+    public void applicationStarted(ComponentContext context) throws Exception {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
         String key = String.format(ENVS_ALIVE_KEY_PATTERN,
                 System.getenv(ENV_TECH_ID_VAR));
         etcdService.set(key, "started");
-    }
 
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        // TODO mark it stopped?
+
     }
 
 }

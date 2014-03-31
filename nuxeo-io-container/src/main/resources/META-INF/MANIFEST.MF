@@ -7,4 +7,5 @@ Bundle-Name: nuxeo.io container
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: com.nuxeo.io.container
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Nuxeo-Component: OSGI-INF/io-heartbeat-contrib.xml
+Nuxeo-Component: OSGI-INF/io-container.xml,
+ OSGI-INF/io-heartbeat-contrib.xml
