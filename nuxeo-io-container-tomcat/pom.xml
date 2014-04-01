@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>nuxeo-io-container-tomcat</artifactId>
-  <name>nuxeo.io contaienr Tomcat</name>
+  <name>nuxeo.io container Tomcat</name>
   <description>nuxeo.io container Tomcat</description>
   <packaging>pom</packaging>
 
