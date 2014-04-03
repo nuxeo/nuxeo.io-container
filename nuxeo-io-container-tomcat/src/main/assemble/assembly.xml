@@ -17,7 +17,7 @@
   </target>
 
   <target name="expand" unless="no.build">
-    <artifact:nuxeo-expand groupPrefixes="org.nuxeo,com.nuxeo" />
+    <artifact:nuxeo-expand groupPrefixes="org.nuxeo" />
     <artifact:print output="${outdir}/dependency-tree.log" />
   </target>
 
@@ -43,7 +43,6 @@
       <artifact:set>
         <includes>
           <artifact groupId="org.nuxeo*" scope="!test" type="!pom" />
-          <artifact groupId="com.nuxeo*" scope="!test" type="!pom" />
         </includes>
         <excludes>
           <artifact groupId="org.nuxeo.lib*" />
@@ -58,9 +57,6 @@
           <artifact groupId="!org.nuxeo*" scope="!test" />
           <artifact groupId="org.nuxeo.lib*" scope="!test" />
         </includes>
-        <excludes>
-          <artifact groupId="com.nuxeo*" />
-        </excludes>
       </artifact:set>
     </copy>
 

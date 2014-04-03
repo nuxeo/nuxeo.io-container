@@ -1,4 +1,4 @@
-<component name="com.nuxeo.io.container.heartbeat">
+<component name="org.nuxeo.io.container.heartbeat">
 
   <extension point="schedule" target="org.nuxeo.ecm.core.scheduler.SchedulerService">
     <schedule id="etcdHeartBeat">
@@ -11,12 +11,12 @@
   <extension target="org.nuxeo.ecm.core.event.EventServiceComponent"
     point="listener">
     <listener name="etcdHeartBeat" async="false"
-      class="com.nuxeo.io.container.HeartBeatListener">
+      class="org.nuxeo.io.container.HeartBeatListener">
       <event>etcdHeartBeat</event>
     </listener>
   </extension>
 
-  <extension target="com.nuxeo.io.etcd.EtcdService" point="configuration">
+  <extension target="org.nuxeo.io.etcd.EtcdService" point="configuration">
     <configuration>
       <host>172.17.42.1</host>
       <port>4001</port>

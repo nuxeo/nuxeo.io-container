@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.nuxeo.io</groupId>
+    <groupId>org.nuxeo.io</groupId>
     <artifactId>nuxeo-io-container-parent</artifactId>
     <version>5.9.3-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
@@ -16,7 +16,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.nuxeo.io</groupId>
+      <groupId>org.nuxeo.io</groupId>
       <artifactId>nuxeo-io-etcd</artifactId>
     </dependency>
 
@@ -27,10 +27,6 @@
     <dependency>
       <groupId>org.nuxeo.ecm.core</groupId>
       <artifactId>nuxeo-core-event</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
     </dependency>
   </dependencies>
 </project>

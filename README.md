@@ -1,4 +1,4 @@
-# nuxeo-io-container
+# nuxeo.io-container
 
 Contains:
 

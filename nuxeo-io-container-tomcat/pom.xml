@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.nuxeo.io</groupId>
+    <groupId>org.nuxeo.io</groupId>
     <artifactId>nuxeo-io-container-parent</artifactId>
     <version>5.9.3-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
@@ -15,11 +15,11 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.nuxeo.io</groupId>
+      <groupId>org.nuxeo.io</groupId>
       <artifactId>nuxeo-io-etcd</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.nuxeo.io</groupId>
+      <groupId>org.nuxeo.io</groupId>
       <artifactId>nuxeo-io-container</artifactId>
     </dependency>
   </dependencies>
