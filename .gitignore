@@ -9,4 +9,5 @@ controller/bin/flush
 *.tmp
 bower_components
 node_modules
+target
 vms/core/etcd_token
