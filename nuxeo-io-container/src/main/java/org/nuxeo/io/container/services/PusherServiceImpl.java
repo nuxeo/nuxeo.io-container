@@ -45,10 +45,6 @@ public class PusherServiceImpl implements PusherService {
         // Fetch all marketplace packages "running"
         List<DownloadablePackage> installedPackages = pm.listUpdatePackages
                 (PackageType.getByValue("addon"), targetPlatform);
-        if (installedPackages.isEmpty()) {
-            etcdService.delete(key);
-            return;
-        }
         List<String> installedPkgIds = new ArrayList<>();
         for (DownloadablePackage installPackage : installedPackages) {
             installedPkgIds.add(installPackage.getId());
