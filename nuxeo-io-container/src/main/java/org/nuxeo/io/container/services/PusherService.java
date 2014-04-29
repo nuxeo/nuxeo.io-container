@@ -14,26 +14,25 @@
  * Contributors:
  *     nuxeo.io Team
  */
-
-package org.nuxeo.io.container;
-
-import org.nuxeo.ecm.core.api.ClientException;
-import org.nuxeo.ecm.core.event.Event;
-import org.nuxeo.ecm.core.event.EventListener;
-import org.nuxeo.io.container.services.PusherService;
-import org.nuxeo.runtime.api.Framework;
-
-import org.nuxeo.io.etcd.EtcdService;
+package org.nuxeo.io.container.services;
 
 /**
- * @since 5.9.3
+ * @since 5.9.4
  */
-public class HeartBeatListener implements EventListener {
+public interface PusherService {
 
-    @Override
-    public void handleEvent(Event event) throws ClientException {
-        PusherService pusherService = Framework.getLocalService(PusherService.class);
-        pusherService.pushAliveStatus();
-    }
+    /**
+     * Push installed packages listing in etcd
+     */
+    void pushPackages();
 
+    /**
+     * Push "started" environment status in etcd
+     */
+    void pushCurrentStatus();
+
+    /**
+     * Push "alive" environment status in etcd
+     */
+    void pushAliveStatus();
 }

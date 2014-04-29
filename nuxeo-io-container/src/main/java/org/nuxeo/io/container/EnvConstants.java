@@ -14,26 +14,20 @@
  * Contributors:
  *     nuxeo.io Team
  */
-
 package org.nuxeo.io.container;
 
-import org.nuxeo.ecm.core.api.ClientException;
-import org.nuxeo.ecm.core.event.Event;
-import org.nuxeo.ecm.core.event.EventListener;
-import org.nuxeo.io.container.services.PusherService;
-import org.nuxeo.runtime.api.Framework;
-
-import org.nuxeo.io.etcd.EtcdService;
-
 /**
- * @since 5.9.3
+ * @since 5.9.4
  */
-public class HeartBeatListener implements EventListener {
+public class EnvConstants {
 
-    @Override
-    public void handleEvent(Event event) throws ClientException {
-        PusherService pusherService = Framework.getLocalService(PusherService.class);
-        pusherService.pushAliveStatus();
-    }
+    public static final String ENVS_CURRENT_KEY_PATTERN = "/envs/%s/status/current";
 
+    public static final String ENV_INSTALLED_PKGS = "/envs/%s/config/packages";
+
+    public static final String ENVS_ALIVE_KEY_PATTERN = "/envs/%s/status/alive";
+
+    public static final String ENV_TECH_ID_VAR = "ENV_TECH_ID";
+
+    public static final int TTL = 10;
 }

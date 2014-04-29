@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="org.nuxeo.io.pusher">
+
+  <implementation class="org.nuxeo.io.container.services.PusherServiceImpl"/>
+
+  <service>
+    <provide interface="org.nuxeo.io.container.services.PusherService"/>
+  </service>
+
+</component>

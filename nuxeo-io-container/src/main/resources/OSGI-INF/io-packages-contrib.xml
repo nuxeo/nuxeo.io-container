@@ -1,0 +1,22 @@
+<component name="org.nuxeo.io.container.packages">
+
+  <extension point="schedule"
+             target="org.nuxeo.ecm.core.scheduler.SchedulerService">
+    <schedule id="etcdPackages">
+      <event>etcdPackages</event>
+      <!-- Packages pushed every 10 minutes -->
+      <cronExpression>0 0/10 * 1/1 * ? *</cronExpression>
+      <!-- Packages pushed every 1 minute temporary -->
+      <!-- <cronExpression>0 0/1 * 1/1 * ? *</cronExpression> -->
+    </schedule>
+  </extension>
+
+  <extension target="org.nuxeo.ecm.core.event.EventServiceComponent"
+             point="listener">
+    <listener name="etcdPackages" async="false"
+              class="org.nuxeo.io.container.PackageListener">
+      <event>etcdPackages</event>
+    </listener>
+  </extension>
+
+</component>
