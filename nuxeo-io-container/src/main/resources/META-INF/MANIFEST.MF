@@ -10,4 +10,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Nuxeo-Component: OSGI-INF/io-container.xml,
  OSGI-INF/io-heartbeat-contrib.xml,
  OSGI-INF/io-pusher-service.xml,
- OSGI-INF/io-packages-contrib.xml
+ OSGI-INF/io-packages-contrib.xml,
+ OSGI-INF/io-container-actions.xml
