@@ -26,7 +26,7 @@ import org.nuxeo.runtime.api.Framework;
 /**
  * Update installed packages listing in etcd
  *
- * @since 5.9.4
+ * @since 5.9.3
  */
 public class PackageListener implements EventListener {
 

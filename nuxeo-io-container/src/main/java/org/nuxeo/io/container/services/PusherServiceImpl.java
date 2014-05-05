@@ -16,6 +16,9 @@
  */
 package org.nuxeo.io.container.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.nuxeo.connect.data.DownloadablePackage;
 import org.nuxeo.connect.packages.PackageManager;
@@ -26,11 +29,8 @@ import org.nuxeo.io.container.EnvConstants;
 import org.nuxeo.io.etcd.EtcdService;
 import org.nuxeo.runtime.api.Framework;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * @since 5.9.4
+ * @since 5.9.3
  */
 public class PusherServiceImpl implements PusherService {
 
@@ -43,19 +43,17 @@ public class PusherServiceImpl implements PusherService {
         String targetPlatform = PlatformVersionHelper.getPlatformFilter();
 
         // Fetch all marketplace packages "running"
-        List<DownloadablePackage> installedPackages = pm.listUpdatePackages
-                (PackageType.getByValue("addon"), targetPlatform);
+        List<DownloadablePackage> installedPackages = pm.listUpdatePackages(
+                PackageType.getByValue("addon"), targetPlatform);
         List<String> installedPkgIds = new ArrayList<>();
         for (DownloadablePackage installPackage : installedPackages) {
             installedPkgIds.add(installPackage.getId());
         }
 
         // Fetch studio bundles "running"
-        List<DownloadablePackage> installedStudios = pm
-                .listAllStudioRemoteOrLocalPackages();
+        List<DownloadablePackage> installedStudios = pm.listAllStudioRemoteOrLocalPackages();
         for (DownloadablePackage studioPackage : installedStudios) {
-            if (!PackageState.getByValue(studioPackage.getState())
-                    .isInstalled()) {
+            if (!PackageState.getByValue(studioPackage.getState()).isInstalled()) {
                 continue;
             }
             installedPkgIds.add(studioPackage.getId());

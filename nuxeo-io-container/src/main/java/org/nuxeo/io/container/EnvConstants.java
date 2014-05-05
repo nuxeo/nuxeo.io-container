@@ -17,7 +17,7 @@
 package org.nuxeo.io.container;
 
 /**
- * @since 5.9.4
+ * @since 5.9.3
  */
 public class EnvConstants {
 
