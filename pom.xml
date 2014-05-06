@@ -17,6 +17,8 @@
 
   <properties>
     <nuxeo.io.version>1.0-SNAPSHOT</nuxeo.io.version>
+    <!-- force s3 version to be 5.9.4-SNAPSHOT to have needed features -->
+    <nuxeo.s3.version>5.9.4-SNAPSHOT</nuxeo.s3.version>
     <marketplace.drive.version>1.3.3</marketplace.drive.version>
     <marketplace.rendering.version>6.3.2</marketplace.rendering.version>
     <marketplace.csv.version>1.2.2</marketplace.csv.version>
@@ -47,6 +49,12 @@
         <groupId>org.nuxeo.io</groupId>
         <artifactId>nuxeo-io-container</artifactId>
         <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.nuxeo.ecm.core</groupId>
+        <artifactId>nuxeo-core-binarymanager-s3</artifactId>
+        <version>${nuxeo.s3.version}</version>
       </dependency>
 
       <!-- Default MPs -->
