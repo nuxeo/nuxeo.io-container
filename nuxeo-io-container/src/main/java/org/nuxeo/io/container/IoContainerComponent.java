@@ -17,19 +17,10 @@
 
 package org.nuxeo.io.container;
 
-import org.apache.commons.lang.StringUtils;
-import org.nuxeo.connect.data.DownloadablePackage;
-import org.nuxeo.connect.packages.PackageManager;
-import org.nuxeo.connect.update.PackageType;
-import org.nuxeo.ecm.admin.runtime.PlatformVersionHelper;
 import org.nuxeo.io.container.services.PusherService;
-import org.nuxeo.io.etcd.EtcdService;
 import org.nuxeo.runtime.api.Framework;
 import org.nuxeo.runtime.model.ComponentContext;
 import org.nuxeo.runtime.model.DefaultComponent;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @since 5.9.3

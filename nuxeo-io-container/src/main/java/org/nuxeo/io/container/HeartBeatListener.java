@@ -23,8 +23,6 @@ import org.nuxeo.ecm.core.event.EventListener;
 import org.nuxeo.io.container.services.PusherService;
 import org.nuxeo.runtime.api.Framework;
 
-import org.nuxeo.io.etcd.EtcdService;
-
 /**
  * @since 5.9.3
  */
