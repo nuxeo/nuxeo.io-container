@@ -21,11 +21,11 @@ package org.nuxeo.io.container;
  */
 public class EnvConstants {
 
-    public static final String ENVS_CURRENT_KEY_PATTERN = "/envs/%s/status/current";
+    public static final String SERVICES_CURRENT_KEY_PATTERN = "/services/%s/1/status/current";
 
-    public static final String ENV_INSTALLED_PKGS = "/envs/%s/config/packages";
+    public static final String SERVICE_INSTALLED_PKGS = "/services/%s/1/config/packages";
 
-    public static final String ENVS_ALIVE_KEY_PATTERN = "/envs/%s/status/alive";
+    public static final String SERVICES_ALIVE_KEY_PATTERN = "/services/%s/1/status/alive";
 
     public static final String ENV_TECH_ID_VAR = "ENV_TECH_ID";
 

@@ -5,7 +5,11 @@
 controller/AWS_DEV_CREDS.txt
 controller/resources/distributions/*
 controller/bin/flush
+.classpath
+.project
+.settings
 *.idea
+*.iml
 *.tmp
 bower_components
 node_modules

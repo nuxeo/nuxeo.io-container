@@ -38,7 +38,7 @@ public class PusherServiceImpl implements PusherService {
     public void pushPackages() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
         PackageManager pm = Framework.getLocalService(PackageManager.class);
-        String key = String.format(EnvConstants.ENV_INSTALLED_PKGS,
+        String key = String.format(EnvConstants.SERVICE_INSTALLED_PKGS,
                 System.getenv(EnvConstants.ENV_TECH_ID_VAR));
         String targetPlatform = PlatformVersionHelper.getPlatformFilter();
 
@@ -64,7 +64,7 @@ public class PusherServiceImpl implements PusherService {
     @Override
     public void pushCurrentStatus() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
-        String key = String.format(EnvConstants.ENVS_CURRENT_KEY_PATTERN,
+        String key = String.format(EnvConstants.SERVICES_CURRENT_KEY_PATTERN,
                 System.getenv(EnvConstants.ENV_TECH_ID_VAR));
         etcdService.set(key, "started");
     }
@@ -72,7 +72,7 @@ public class PusherServiceImpl implements PusherService {
     @Override
     public void pushAliveStatus() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
-        String key = String.format(EnvConstants.ENVS_ALIVE_KEY_PATTERN,
+        String key = String.format(EnvConstants.SERVICES_ALIVE_KEY_PATTERN,
                 System.getenv(EnvConstants.ENV_TECH_ID_VAR));
         etcdService.set(key, "1", EnvConstants.TTL);
     }
