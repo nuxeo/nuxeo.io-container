@@ -47,6 +47,11 @@
       </dependency>
       <dependency>
         <groupId>org.nuxeo.io</groupId>
+        <artifactId>nuxeo-io</artifactId>
+        <version>${nuxeo.io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.io</groupId>
         <artifactId>nuxeo-io-container</artifactId>
         <version>${project.version}</version>
       </dependency>

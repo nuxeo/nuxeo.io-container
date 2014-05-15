@@ -16,9 +16,6 @@
  */
 package org.nuxeo.io.container.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.lang.StringUtils;
 import org.nuxeo.connect.data.DownloadablePackage;
 import org.nuxeo.connect.packages.PackageManager;
@@ -27,10 +24,14 @@ import org.nuxeo.connect.update.PackageType;
 import org.nuxeo.ecm.admin.runtime.PlatformVersionHelper;
 import org.nuxeo.io.container.EnvConstants;
 import org.nuxeo.io.etcd.EtcdService;
+import org.nuxeo.io.service.IoServiceImpl;
 import org.nuxeo.runtime.api.Framework;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * @since 5.9.3
+ * @since 5.9.4
  */
 public class PusherServiceImpl implements PusherService {
 
@@ -38,22 +39,24 @@ public class PusherServiceImpl implements PusherService {
     public void pushPackages() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
         PackageManager pm = Framework.getLocalService(PackageManager.class);
-        String key = String.format(EnvConstants.SERVICE_INSTALLED_PKGS,
+        String key = String.format(IoServiceImpl.SERVICE_CONFIG_PACKAGES,
                 System.getenv(EnvConstants.ENV_TECH_ID_VAR));
         String targetPlatform = PlatformVersionHelper.getPlatformFilter();
 
         // Fetch all marketplace packages "running"
-        List<DownloadablePackage> installedPackages = pm.listUpdatePackages(
-                PackageType.getByValue("addon"), targetPlatform);
+        List<DownloadablePackage> installedPackages = pm.listUpdatePackages
+                (PackageType.getByValue("addon"), targetPlatform);
         List<String> installedPkgIds = new ArrayList<>();
         for (DownloadablePackage installPackage : installedPackages) {
             installedPkgIds.add(installPackage.getId());
         }
 
         // Fetch studio bundles "running"
-        List<DownloadablePackage> installedStudios = pm.listAllStudioRemoteOrLocalPackages();
+        List<DownloadablePackage> installedStudios = pm
+                .listAllStudioRemoteOrLocalPackages();
         for (DownloadablePackage studioPackage : installedStudios) {
-            if (!PackageState.getByValue(studioPackage.getState()).isInstalled()) {
+            if (!PackageState.getByValue(studioPackage.getState())
+                    .isInstalled()) {
                 continue;
             }
             installedPkgIds.add(studioPackage.getId());
@@ -64,7 +67,7 @@ public class PusherServiceImpl implements PusherService {
     @Override
     public void pushCurrentStatus() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
-        String key = String.format(EnvConstants.SERVICES_CURRENT_KEY_PATTERN,
+        String key = String.format(IoServiceImpl.SERVICE_CURRENT_STATUS_KEY_PATTERN,
                 System.getenv(EnvConstants.ENV_TECH_ID_VAR));
         etcdService.set(key, "started");
     }
@@ -72,7 +75,7 @@ public class PusherServiceImpl implements PusherService {
     @Override
     public void pushAliveStatus() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
-        String key = String.format(EnvConstants.SERVICES_ALIVE_KEY_PATTERN,
+        String key = String.format(IoServiceImpl.SERVICE_ALIVE_STATUS_KEY_PATTERN,
                 System.getenv(EnvConstants.ENV_TECH_ID_VAR));
         etcdService.set(key, "1", EnvConstants.TTL);
     }

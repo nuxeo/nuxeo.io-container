@@ -20,6 +20,11 @@
     <dependency>
       <groupId>org.nuxeo.io</groupId>
       <artifactId>nuxeo-io-etcd</artifactId>
+      <version>${nuxeo.io.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.nuxeo.io</groupId>
+      <artifactId>nuxeo-io</artifactId>
     </dependency>
     <dependency>
       <groupId>org.nuxeo.ecm.core</groupId>
