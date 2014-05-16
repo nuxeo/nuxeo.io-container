@@ -17,6 +17,8 @@
 package org.nuxeo.io.container.services;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.nuxeo.connect.data.DownloadablePackage;
 import org.nuxeo.connect.packages.PackageManager;
 import org.nuxeo.connect.update.PackageState;
@@ -35,20 +37,25 @@ import java.util.List;
  */
 public class PusherServiceImpl implements PusherService {
 
+    private static final Log log = LogFactory.getLog(PusherServiceImpl.class);
+
+    protected static int _1 = 1;
+
     @Override
     public void pushPackages() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
         PackageManager pm = Framework.getLocalService(PackageManager.class);
         String key = String.format(IoServiceImpl.SERVICE_CONFIG_PACKAGES,
-                System.getenv(EnvConstants.ENV_TECH_ID_VAR));
-        String targetPlatform = PlatformVersionHelper.getPlatformFilter();
+                System.getenv(EnvConstants.ENV_TECH_ID_VAR), _1);
 
-        // Fetch all marketplace packages "running"
-        List<DownloadablePackage> installedPackages = pm.listUpdatePackages
-                (PackageType.getByValue("addon"), targetPlatform);
+        // Fetch all local packages "running"
+        List<DownloadablePackage> installedPackages = pm.listLocalPackages
+                (PackageType.getByValue("addon"));
         List<String> installedPkgIds = new ArrayList<>();
         for (DownloadablePackage installPackage : installedPackages) {
-            installedPkgIds.add(installPackage.getId());
+            if (pm.isInstalled(installPackage)) {
+                installedPkgIds.add(installPackage.getId());
+            }
         }
 
         // Fetch studio bundles "running"
@@ -61,14 +68,17 @@ public class PusherServiceImpl implements PusherService {
             }
             installedPkgIds.add(studioPackage.getId());
         }
-        etcdService.set(key, StringUtils.join(installedPkgIds, " "));
+
+        String packages = StringUtils.join(installedPkgIds, " ");
+        log.info("Update installed package list: " + packages);
+        etcdService.set(key, packages);
     }
 
     @Override
     public void pushCurrentStatus() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
         String key = String.format(IoServiceImpl.SERVICE_CURRENT_STATUS_KEY_PATTERN,
-                System.getenv(EnvConstants.ENV_TECH_ID_VAR));
+                System.getenv(EnvConstants.ENV_TECH_ID_VAR), _1);
         etcdService.set(key, "started");
     }
 
@@ -76,7 +86,7 @@ public class PusherServiceImpl implements PusherService {
     public void pushAliveStatus() {
         EtcdService etcdService = Framework.getLocalService(EtcdService.class);
         String key = String.format(IoServiceImpl.SERVICE_ALIVE_STATUS_KEY_PATTERN,
-                System.getenv(EnvConstants.ENV_TECH_ID_VAR));
+                System.getenv(EnvConstants.ENV_TECH_ID_VAR), _1);
         etcdService.set(key, "1", EnvConstants.TTL);
     }
 }

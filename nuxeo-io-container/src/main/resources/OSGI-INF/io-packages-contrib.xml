@@ -7,7 +7,7 @@
       <!-- Packages pushed every 10 minutes -->
       <cronExpression>0 0/10 * 1/1 * ? *</cronExpression>
       <!-- Packages pushed every 1 minute temporary -->
-      <!-- <cronExpression>0 0/1 * 1/1 * ? *</cronExpression> -->
+       <!--<cronExpression>0 0/1 * 1/1 * ? *</cronExpression>-->
     </schedule>
   </extension>
 
