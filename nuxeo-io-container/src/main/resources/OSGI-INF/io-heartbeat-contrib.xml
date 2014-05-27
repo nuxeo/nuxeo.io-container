@@ -18,8 +18,7 @@
 
   <extension target="org.nuxeo.io.etcd.EtcdService" point="configuration">
     <configuration>
-      <host>172.17.42.1</host>
-      <port>4001</port>
+      <endpoint>http://172.17.42.1:4001</endpoint>
     </configuration>
   </extension>
 
