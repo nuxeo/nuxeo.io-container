@@ -54,11 +54,6 @@
         <version>${project.version}</version>
       </dependency>
 
-      <dependency>
-        <groupId>org.nuxeo.ecm.core</groupId>
-        <artifactId>nuxeo-core-binarymanager-s3</artifactId>
-      </dependency>
-
       <!-- Default MPs -->
       <dependency>
         <groupId>org.nuxeo.marketplace.drive</groupId>
