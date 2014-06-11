@@ -12,6 +12,7 @@
   <artifactId>nuxeo-io-container-parent</artifactId>
   <name>nuxeo.io container Parent</name>
   <description>nuxeo.io container Parent</description>
+  <version>5.9.4-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -40,6 +41,11 @@
       <dependency>
         <groupId>org.nuxeo.io</groupId>
         <artifactId>nuxeo-io-etcd</artifactId>
+        <version>${nuxeo.io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.io</groupId>
+        <artifactId>nuxeo-io</artifactId>
         <version>${nuxeo.io.version}</version>
       </dependency>
       <dependency>
