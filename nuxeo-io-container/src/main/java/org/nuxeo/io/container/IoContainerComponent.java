@@ -30,6 +30,7 @@ public class IoContainerComponent extends DefaultComponent {
     @Override
     public void applicationStarted(ComponentContext context) throws Exception {
         PusherService pusherService = Framework.getLocalService(PusherService.class);
+        pusherService.pushAliveStatus();
         pusherService.pushCurrentStatus();
         pusherService.pushPackages();
     }
