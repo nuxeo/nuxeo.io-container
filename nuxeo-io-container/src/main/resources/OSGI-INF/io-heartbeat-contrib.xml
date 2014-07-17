@@ -16,7 +16,7 @@
     </listener>
   </extension>
 
-  <extension target="org.nuxeo.io.etcd.EtcdService" point="configuration">
+  <extension target="org.nuxeo.etcd.EtcdService" point="configuration">
     <configuration>
       <endpoint>http://172.17.42.1:4001</endpoint>
     </configuration>
