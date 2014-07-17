@@ -37,7 +37,7 @@ public class PusherServiceImpl implements PusherService {
 
     private static final Log log = LogFactory.getLog(PusherServiceImpl.class);
 
-    public static final String SERVICE_KEY_PATTERN = "/services/%s/";
+    public static final String SERVICE_KEY_PATTERN = "/services/%s";
 
     public static final String SERVICE_STATUS_KEY_PATTERN = SERVICE_KEY_PATTERN
             + "/%d/status";
