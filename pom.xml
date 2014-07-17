@@ -16,6 +16,7 @@
   <packaging>pom</packaging>
 
   <properties>
+    <nuxeo.etcd.version>0.1-SNAPSHOT</nuxeo.etcd.version>
     <nuxeo.io.version>1.0-SNAPSHOT</nuxeo.io.version>
     <marketplace.drive.version>1.3.4</marketplace.drive.version>
     <marketplace.rendering.version>6.3.3</marketplace.rendering.version>
@@ -39,9 +40,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.nuxeo.io</groupId>
-        <artifactId>nuxeo-io-etcd</artifactId>
-        <version>${nuxeo.io.version}</version>
+        <groupId>org.nuxeo.etcd</groupId>
+        <artifactId>nuxeo-etcd</artifactId>
+        <version>${nuxeo.etcd.version}</version>
       </dependency>
       <dependency>
         <groupId>org.nuxeo.io</groupId>

@@ -26,8 +26,8 @@ import org.nuxeo.connect.data.DownloadablePackage;
 import org.nuxeo.connect.packages.PackageManager;
 import org.nuxeo.connect.update.PackageState;
 import org.nuxeo.connect.update.PackageType;
+import org.nuxeo.etcd.EtcdService;
 import org.nuxeo.io.container.EnvConstants;
-import org.nuxeo.io.etcd.EtcdService;
 import org.nuxeo.runtime.api.Framework;
 
 /**
