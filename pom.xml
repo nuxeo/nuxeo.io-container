@@ -29,6 +29,9 @@
   <profiles>
     <profile>
       <id>tomcat</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <modules>
         <module>nuxeo-io-container-tomcat</module>
       </modules>
