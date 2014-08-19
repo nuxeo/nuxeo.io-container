@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.nuxeo.ecm.distribution</groupId>
     <artifactId>nuxeo-distribution</artifactId>
-    <version>5.9.5</version>
+    <version>5.9.6-SNAPSHOT</version>
   </parent>
 
   <groupId>org.nuxeo.io</groupId>
@@ -20,8 +20,6 @@
     <marketplace.rendering.version>6.3.3</marketplace.rendering.version>
     <marketplace.csv.version>1.2.3</marketplace.csv.version>
     <marketplace.web.mobile.dm.version>1.5.3</marketplace.web.mobile.dm.version>
-    <nuxeo.platform.web.common.version>5.9.5.1</nuxeo.platform.web.common.version>
-    <nuxeo.theme.jsf.version>5.9.5.1</nuxeo.theme.jsf.version>
   </properties>
 
   <modules>
@@ -51,19 +49,6 @@
         <groupId>org.nuxeo.io</groupId>
         <artifactId>nuxeo-io-container</artifactId>
         <version>${project.version}</version>
-      </dependency>
-
-      <!-- override nuxeo-platform-web-common version -->
-      <dependency>
-        <groupId>org.nuxeo.ecm.platform</groupId>
-        <artifactId>nuxeo-platform-web-common</artifactId>
-        <version>${nuxeo.platform.web.common.version}</version>
-      </dependency>
-      <!-- override nuxeo-platform-web-common version -->
-      <dependency>
-        <groupId>org.nuxeo.ecm.platform</groupId>
-        <artifactId>nuxeo-theme-jsf</artifactId>
-        <version>${nuxeo.theme.jsf.version}</version>
       </dependency>
 
       <!-- Default MPs -->
