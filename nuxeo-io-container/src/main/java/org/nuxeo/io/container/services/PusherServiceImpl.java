@@ -68,7 +68,7 @@ public class PusherServiceImpl implements PusherService {
         List<String> installedPkgIds = new ArrayList<>();
         for (DownloadablePackage installPackage : installedPackages) {
             if (pm.isInstalled(installPackage)) {
-                installedPkgIds.add(installPackage.getId());
+                installedPkgIds.add(installPackage.getName());
             }
         }
 
