@@ -50,6 +50,10 @@
         <artifactId>nuxeo-io-container</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.nuxeo.logs.viewer</groupId>
+        <artifactId>nuxeo-logs-viewer</artifactId>
+      </dependency>
 
       <!-- Default MPs -->
       <dependency>
