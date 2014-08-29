@@ -22,6 +22,7 @@
     <marketplace.web.mobile.dm.version>1.5.4</marketplace.web.mobile.dm.version>
     <nuxeo.platform.web.common.version>5.9.5.1</nuxeo.platform.web.common.version>
     <nuxeo.theme.jsf.version>5.9.5.1</nuxeo.theme.jsf.version>
+    <nuxeo.logs.viewer.version>5.9.5</nuxeo.logs.viewer.version>
   </properties>
 
   <modules>
@@ -51,6 +52,11 @@
         <groupId>org.nuxeo.io</groupId>
         <artifactId>nuxeo-io-container</artifactId>
         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.logs.viewer</groupId>
+        <artifactId>nuxeo-logs-viewer</artifactId>
+        <version>${nuxeo.logs.viewer.version}</version>
       </dependency>
 
       <!-- override nuxeo-platform-web-common version -->

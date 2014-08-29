@@ -26,6 +26,10 @@
       <groupId>org.nuxeo.ecm.core</groupId>
       <artifactId>nuxeo-core-binarymanager-s3</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.nuxeo.logs.viewer</groupId>
+      <artifactId>nuxeo-logs-viewer</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.nuxeo.ecm.platform</groupId>
