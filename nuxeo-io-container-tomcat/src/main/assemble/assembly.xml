@@ -31,11 +31,11 @@
     <mkdir dir="${stagedir}" />
     <unzip dest="${stagedir}">
       <artifact:resolveFile key="org.nuxeo.ecm.distribution:nuxeo-distribution-tomcat::zip:nuxeo-cap" />
-      <!--
       <patternset>
-        <exclude name="bundles-we-do-not-want**" />
+        <!-- To be removed when upgradingto 5.9.6 -->
+        <exclude name="**/nuxeo-platform-web-common**" />
+        <exclude name="**/nuxeo-theme-jsf**" />
       </patternset>
-      -->
     </unzip>
     <nx:rename from="${stagedir}/nuxeo-*" to="${app.path}" />
 
