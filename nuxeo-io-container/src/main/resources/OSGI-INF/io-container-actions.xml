@@ -6,7 +6,6 @@
     point="actions">
 
     <action id="Setup" enabled="false" />
-    <action id="ConnectAppsPrivate" enabled="false" />
     <action id="ConnectAppsLocal" enabled="false" />
 
   </extension>
