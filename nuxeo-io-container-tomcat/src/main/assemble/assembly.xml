@@ -62,24 +62,13 @@
 
     <delete>
       <fileset dir="${app.path}/nxserver/lib">
-        <!-- jetty is needed by vcs remote -->
-        <!-- jetty-util is needed by jsp impl jar - which is referring jetty log classes -->
-        <!-- jetty-naming has jndi properties conflicting with Tomcat -->
-        <include name="jetty-naming*" />
-        <include name="el-api*" />
-        <include name="jsp-*" />
-        <include name="juel-api-*" />
-        <include name="tomcat-dbcp-*" />
-      </fileset>
-      <!-- replaced by sl4j bridge -->
-      <fileset dir="${app.path}/nxserver/lib">
         <include name="commons-logging*" />
+        <include name="jsp-api-*" />
       </fileset>
     </delete>
     <!-- Move some libraries from nxserver to Tomcat default lib directory -->
     <move todir="${app.path}/lib">
       <fileset dir="${app.path}/nxserver/lib">
-        <include name="nuxeo-*" />
         <include name="lucene-*" />
         <include name="commons-lang-*" />
         <include name="freemarker-*" />
@@ -87,8 +76,6 @@
         <include name="xercesImpl-*" />
         <!-- install sl4j bridge in container classpath -->
         <include name="slf4j*" />
-        <include name="jcl-over-slf4j*" />
-        <include name="log4j-*" />
       </fileset>
     </move>
     <nx:rmdups dir="${app.path}/nxserver/lib" />
@@ -98,25 +85,22 @@
     <move todir="${app.path}/endorsed">
       <fileset dir="${app.path}/nxserver/lib">
         <include name="jaxb-api-*" />
-        <include name="jaxws-api-*" />
       </fileset>
     </move>
 
-    <!-- retrieve Marketplace packages -->
-    <copy todir="${app.path}/setupWizardDownloads">
-      <artifact:resolveFile key="org.nuxeo.marketplace.drive:nuxeo-drive::zip" />
-      <artifact:resolveFile key="org.nuxeo.template.rendering:package::zip" />
-      <artifact:resolveFile key="org.nuxeo.marketplace.csv:marketplace-csv::zip" />
-      <artifact:resolveFile key="org.nuxeo.marketplace.web.mobile:nuxeo-web-mobile-package::zip" />
-    </copy>
-
-    <!-- generate  -->
-    <echo append="true" file="${app.path}/nxserver/data/installAfterRestart.log">
-init${line.separator}
-add setupWizardDownloads/nuxeo-drive-${marketplace.drive.version}.zip${line.separator}
-add setupWizardDownloads/package-${marketplace.rendering.version}.zip${line.separator}
-add setupWizardDownloads/marketplace-csv-${marketplace.csv.version}.zip${line.separator}
-add setupWizardDownloads/nuxeo-web-mobile-package-${marketplace.web.mobile.cap.version}.zip${line.separator}</echo>
+    <!-- Add marketplace packages -->
+    <chmod file="${app.path}/bin/nuxeoctl" perm="u+x"/>
+    <exec executable="${app.path}/bin/nuxeoctl">
+      <arg value="mp-add" />
+      <arg value="nuxeo-web-mobile" />
+      <arg value="nuxeo-drive" />
+      <arg value="nuxeo-diff" />
+      <!-- <arg value="nuxeo-spreadsheet"/> -->
+      <arg value="nuxeo-dam" />
+      <arg value="nuxeo-template-rendering" />
+      <arg value="--clid" />
+      <arg value="${nuxeo.clid}" />
+    </exec>
 
     <zip destfile="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip"
       basedir="${stagedir}" />

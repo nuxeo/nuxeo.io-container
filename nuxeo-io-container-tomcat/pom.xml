@@ -30,32 +30,6 @@
       <groupId>org.nuxeo.logs.viewer</groupId>
       <artifactId>nuxeo-logs-viewer</artifactId>
     </dependency>
-
-    <!-- Default MPs -->
-    <dependency>
-      <groupId>org.nuxeo.marketplace.drive</groupId>
-      <artifactId>nuxeo-drive</artifactId>
-      <type>zip</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.template.rendering</groupId>
-      <artifactId>package</artifactId>
-      <type>zip</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.marketplace.csv</groupId>
-      <artifactId>marketplace-csv</artifactId>
-      <type>zip</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.nuxeo.marketplace.web.mobile</groupId>
-      <artifactId>nuxeo-web-mobile-package</artifactId>
-      <type>zip</type>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
 
   <build>
