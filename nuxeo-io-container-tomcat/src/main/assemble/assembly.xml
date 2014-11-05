@@ -107,7 +107,7 @@
       <artifact:resolveFile key="org.nuxeo.marketplace.drive:nuxeo-drive::zip" />
       <artifact:resolveFile key="org.nuxeo.template.rendering:package::zip" />
       <artifact:resolveFile key="org.nuxeo.marketplace.csv:marketplace-csv::zip" />
-      <artifact:resolveFile key="org.nuxeo.marketplace.web.mobile:nuxeo-web-mobile-dm-package::zip" />
+      <artifact:resolveFile key="org.nuxeo.marketplace.web.mobile:nuxeo-web-mobile-package::zip" />
     </copy>
 
     <!-- generate  -->
@@ -116,7 +116,7 @@ init${line.separator}
 add setupWizardDownloads/nuxeo-drive-${marketplace.drive.version}.zip${line.separator}
 add setupWizardDownloads/package-${marketplace.rendering.version}.zip${line.separator}
 add setupWizardDownloads/marketplace-csv-${marketplace.csv.version}.zip${line.separator}
-add setupWizardDownloads/nuxeo-web-mobile-dm-package-${marketplace.web.mobile.dm.version}.zip${line.separator}</echo>
+add setupWizardDownloads/nuxeo-web-mobile-package-${marketplace.web.mobile.cap.version}.zip${line.separator}</echo>
 
     <zip destfile="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip"
       basedir="${stagedir}" />
