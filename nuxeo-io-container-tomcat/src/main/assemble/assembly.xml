@@ -95,7 +95,7 @@
       <arg value="nuxeo-web-mobile" />
       <arg value="nuxeo-drive" />
       <arg value="nuxeo-diff" />
-      <!-- <arg value="nuxeo-spreadsheet"/> -->
+      <arg value="nuxeo-spreadsheet"/>
       <arg value="nuxeo-dam" />
       <arg value="nuxeo-template-rendering" />
       <arg value="--clid" />
