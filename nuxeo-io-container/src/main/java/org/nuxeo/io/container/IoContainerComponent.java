@@ -28,7 +28,7 @@ import org.nuxeo.runtime.model.DefaultComponent;
 public class IoContainerComponent extends DefaultComponent {
 
     @Override
-    public void applicationStarted(ComponentContext context) throws Exception {
+    public void applicationStarted(ComponentContext context) {
         PusherService pusherService = Framework.getLocalService(PusherService.class);
         pusherService.pushAliveStatus();
         pusherService.pushCurrentStatus();
