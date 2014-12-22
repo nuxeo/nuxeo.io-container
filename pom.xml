@@ -17,6 +17,8 @@
   <properties>
     <nuxeo.etcd.version>0.2</nuxeo.etcd.version>
     <nuxeo.clid>/opt/build/hudson/instance.clid</nuxeo.clid>
+    <!-- Force 6.0 version in nuxeo.conf because HFXX is handled like a snapshot when resolving MP packages -->
+    <mp.nuxeo.version>6.0</mp.nuxeo.version>
   </properties>
 
   <modules>
