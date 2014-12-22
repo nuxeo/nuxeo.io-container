@@ -1,12 +1,24 @@
 <component name="org.nuxeo.io.container.actions">
 
   <require>org.nuxeo.connect.client.actions</require>
+  <require>org.nuxeo.elasticsearch.web.actions</require>
 
   <extension target="org.nuxeo.ecm.platform.actions.ActionService"
     point="actions">
 
     <action id="Setup" enabled="false" />
     <action id="ConnectAppsLocal" enabled="false" />
+
+    <!-- Disable ES tabs -->
+    <action id="ESConfig" enabled="false" />
+    <action id="ESAdmin" enabled="false" />
+    <action id="ESpp" enabled="false" />
+    <!-- Container specific ES tab -->
+    <action id="elastic_search_container" link="/incl/elasticsearch/container.xhtml" label="tab.elastic.admin"
+      type="admin_rest_document_link" order="30" enabled="${elasticsearch.enabled:=true}">
+      <category>ElasticSearch_sub_tab</category>
+      <filter-id>only_for_manager</filter-id>
+    </action>
 
   </extension>
 
