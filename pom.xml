@@ -4,14 +4,14 @@
   <parent>
     <groupId>org.nuxeo.ecm.distribution</groupId>
     <artifactId>nuxeo-distribution</artifactId>
-    <version>6.0-HF07-SNAPSHOT</version>
+    <version>6.0-HF07</version>
   </parent>
 
   <groupId>org.nuxeo.io</groupId>
   <artifactId>nuxeo-io-container-parent</artifactId>
   <name>nuxeo.io container Parent</name>
   <description>nuxeo.io container Parent</description>
-  <version>6.0-HF07-SNAPSHOT</version>
+  <version>6.0-HF07</version>
   <packaging>pom</packaging>
 
   <properties>
