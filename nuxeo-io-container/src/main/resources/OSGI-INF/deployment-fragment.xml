@@ -8,5 +8,15 @@
     </unzip>
   </install>
 
+  <!-- add locales -->
+  <mkdir path="${bundle.fileName}.tmp"/>
+  <unzip from="${bundle.fileName}" to="${bundle.fileName}.tmp"/>
+  <append from="${bundle.fileName}.tmp/i18n/messages_en.properties"
+    to="nuxeo.war/WEB-INF/classes/messages.properties" addNewLine="true"/>
+  <append from="${bundle.fileName}.tmp/i18n/messages_en.properties"
+    to="nuxeo.war/WEB-INF/classes/messages_en_US.properties" addNewLine="true"/>
+  <append from="${bundle.fileName}.tmp/i18n/messages_fr.properties"
+    to="nuxeo.war/WEB-INF/classes/messages_fr.properties" addNewLine="true"/>
+  <delete path="${bundle.fileName}.tmp"/>
 </fragment>
 
