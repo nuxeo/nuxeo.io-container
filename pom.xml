@@ -21,6 +21,7 @@
 
   <modules>
     <module>nuxeo-io-container</module>
+    <module>nuxeo-io-logger</module>
   </modules>
 
   <profiles>
@@ -45,6 +46,11 @@
       <dependency>
         <groupId>org.nuxeo.io</groupId>
         <artifactId>nuxeo-io-container</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.lib</groupId>
+        <artifactId>nuxeo-io-logger</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
