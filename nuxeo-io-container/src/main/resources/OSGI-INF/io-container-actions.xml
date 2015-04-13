@@ -19,7 +19,6 @@
       <category>ElasticSearch_sub_tab</category>
       <filter-id>only_for_manager</filter-id>
     </action>
-
   </extension>
 
 </component>

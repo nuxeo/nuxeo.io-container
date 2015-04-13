@@ -76,6 +76,8 @@
         <include name="xercesImpl-*" />
         <!-- install sl4j bridge in container classpath -->
         <include name="slf4j*" />
+        <!-- include nuxeo.io logger in container classpath too -->
+        <include name="nuxeo-io-logger*" />
       </fileset>
     </move>
     <nx:rmdups dir="${app.path}/nxserver/lib" />
