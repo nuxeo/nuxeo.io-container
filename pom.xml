@@ -11,7 +11,7 @@
   <artifactId>nuxeo-io-container-parent</artifactId>
   <name>nuxeo.io container Parent</name>
   <description>nuxeo.io container Parent</description>
-  <version>7.2.1-SNAPSHOT</version>
+  <version>7.2.1-I20150417_1242</version>
   <packaging>pom</packaging>
 
   <properties>
