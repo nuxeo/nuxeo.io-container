@@ -49,10 +49,15 @@ public class StringifiedSocketAppender extends SocketAppender {
 
         if (oos != null) {
             try {
+                if (locationInfo) {
+                    event.getLocationInformation();
+                }
+
                 Set<Map.Entry> set = event.getProperties().entrySet();
                 for (Map.Entry entry : set) {
                     event.setProperty((String) entry.getKey(), entry.getValue().toString());
                 }
+
                 if (getApplication() != null) {
                     event.setProperty("application", getApplication());
                 }
