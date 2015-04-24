@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.nuxeo.io</groupId>
     <artifactId>nuxeo-io-container-parent</artifactId>
-    <version>7.2.2-I20150424_1058</version>
+    <version>-f</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
