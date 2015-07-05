@@ -31,7 +31,7 @@ import org.nuxeo.runtime.api.Framework;
 public class PackageListener implements EventListener {
 
     @Override
-    public void handleEvent(Event event) throws ClientException {
+    public void handleEvent(Event event) {
         PusherService pusherService = Framework.getLocalService(PusherService.class);
         pusherService.pushPackages();
     }
