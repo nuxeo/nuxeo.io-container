@@ -100,6 +100,7 @@
       <arg value="nuxeo-spreadsheet"/>
       <arg value="nuxeo-dam" />
       <arg value="nuxeo-template-rendering" />
+      <arg value="nuxeo-template-rendering-samples" />
       <arg value="--clid" />
       <arg value="${nuxeo.clid}" />
     </exec>
