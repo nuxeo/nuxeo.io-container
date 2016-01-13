@@ -90,8 +90,18 @@
       </fileset>
     </move>
 
-    <!-- Add marketplace packages -->
+
     <chmod file="${app.path}/bin/nuxeoctl" perm="u+x"/>
+
+    <!-- Install hotfixes -->
+    <exec executable="${app.path}/bin/nuxeoctl">
+      <arg value="mp-hotfix" />
+      <arg value="--accept=true" />
+      <arg value="--clid" />      
+      <arg value="${nuxeo.clid}" />
+    </exec>
+
+    <!-- Add marketplace packages -->
     <exec executable="${app.path}/bin/nuxeoctl">
       <arg value="mp-add" />
       <arg value="nuxeo-web-mobile" />
