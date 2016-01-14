@@ -93,14 +93,13 @@
 
     <chmod file="${app.path}/bin/nuxeoctl" perm="u+x"/>
 
-    <!-- Install hotfixes -->
-    <exec executable="${app.path}/bin/nuxeoctl">
-      <arg value="mp-hotfix" />
-      <arg value="--accept=true" />
-      <arg value="--clid" />      
-      <arg value="${nuxeo.clid}" />
+    <!-- Add hotfixes -->
+    <exec executable="bash">
+      <arg value="-c" />
+      <arg line="&quot;${app.path}/bin/nuxeoctl --clid ${nuxeo.clid} mp-listall | awk ' /nuxeo-${nuxeo.distribution.version}-HF/ {print $3}' | xargs ${app.path}/bin/nuxeoctl --clid ${nuxeo.clid} mp-add --accept=true &quot;"/>  
     </exec>
 
+    
     <!-- Add marketplace packages -->
     <exec executable="${app.path}/bin/nuxeoctl">
       <arg value="mp-add" />
