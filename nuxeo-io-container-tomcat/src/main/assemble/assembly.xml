@@ -94,7 +94,7 @@
     <chmod file="${app.path}/bin/nuxeoctl" perm="u+x"/>
 
     <!-- Install hotfixes -->
-    <exec executable="${app.path}/bin/nuxeoctl">
+    <exec executable="${app.path}/bin/nuxeoctl" failonerror="true">
       <arg value="mp-hotfix" />
       <arg value="--accept=true" />
       <arg value="--clid" />      
@@ -102,7 +102,7 @@
     </exec>
 
     <!-- Add marketplace packages -->
-    <exec executable="${app.path}/bin/nuxeoctl">
+    <exec executable="${app.path}/bin/nuxeoctl" failonerror="true">
       <arg value="mp-add" />
       <arg value="nuxeo-web-mobile" />
       <arg value="nuxeo-drive" />
